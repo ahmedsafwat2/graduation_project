@@ -17,11 +17,11 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
-app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')
+app.config['MAIL_USERNAME'] = 'asosnses@gmail.com'
+app.config['MAIL_PASSWORD'] = 'jslq lexj hukz acnv'
 mail = Mail(app)
 
 
@@ -70,8 +70,8 @@ def calc(speed, length, width, seeds):
 
 def connect_mqtt():
     client_id = f'publish-{random.randint(0, 1000)}'
-    broker = '2.tcp.eu.ngrok.io'
-    port = 15402
+    broker = '5.tcp.eu.ngrok.io'
+    port = 15966
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             print("Connected to MQTT Broker!")

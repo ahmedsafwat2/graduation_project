@@ -18,15 +18,33 @@ class User(db.Model, UserMixin):
     def get_reset_token(self):
         s = Serializer(current_app.config['SECRET_KEY'])
         return s.dumps({'user_id': self.id})
+    def get_reset_token_try(self):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        return s.dumps({'user_username': self.username, 'user_email':self.email, 'user_password':self.password})
     
     @staticmethod
     def verify_reset_token(token):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
-            user_id = s.loads(token, max_age=60)['user_id']
+            user_id = s.loads(token, max_age=300)['user_id']
         except:
             return None
         return User.query.get(user_id)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+    
+    @staticmethod
+    def verify_reset_token_try(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            ret_user = s.loads(token, max_age=300)
+            user = User(username=ret_user['user_username'], email=ret_user['user_email'], password=ret_user['user_password'])
+            db.session.add(user)
+            db.session.commit()
+            return
+        except:
+            return None
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"

@@ -78,3 +78,20 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.custom-img {
+  width: 200px; /* Adjust width as needed */
+  height: 200px; /* Adjust height as needed */
+  object-fit: cover;
+  border-radius: 50%; /* Make the image circular */
+}
+
+.d-flex {
+  gap: 80px; /* Space between cards horizontally */
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin-bottom: 50px; /* Space between cards vertically */
+}

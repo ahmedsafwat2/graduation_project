@@ -1,4 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>About Page</h1>
-{% endblock content %}
+<div class="container mt-4">
+    <h1 class="mb-4">About</h1>
+    <div class="d-flex flex-wrap justify-content-between">
+        {% for i in range(1, 14) %}
+        <div class="card shadow-sm" style="width: 18rem; margin: 10px;">
+            <img class="card-img-top rounded-circle custom-img" src="{{ url_for('static', filename='images/image' + i|string + '.png') }}" alt="Image {{ i }}">
+            <div class="card-body text-center">
+                <h5 class="card-title">Image {{ i }}</h5>
+                <p class="card-text">This is a description of image {{ i }}.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
