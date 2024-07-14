@@ -8,7 +8,6 @@ from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
-import secrets
 import string
 
 

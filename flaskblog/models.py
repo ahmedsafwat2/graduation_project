@@ -32,7 +32,10 @@ class User(db.Model, UserMixin):
         return User.query.get(user_id)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+        return f"User('{self.username}', '{self.password}', '{self.password}')"
+
+    def __str__(self):
+        return f"User('{self.username}', '{self.password}', '{self.password}')"
     
     @staticmethod
     def verify_reset_token_try(token):
